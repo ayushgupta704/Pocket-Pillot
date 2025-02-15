@@ -52,7 +52,7 @@ export default function Home(){
               
               <Card key={index} className="p-6">
 
-              <CardContent className="space-x-4 pt-4">
+              <CardContent className="space-x-4 pt-4 text-center">
                 {feature.icon}
                 <h3 className="text-xl fint-semiold">{feature.title}</h3>
 
