@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react'
 import { Button } from '@/components/ui/button';
 
-export default function NotFound(){
+const NotFound=()=>{
   return (
     <div className='flex flex-col items-center justify-center min-h-[100vh] px-4 text-center'>
         <h1 className='text-6xl font-bold gradient-title mb-4'>404</h1>
@@ -16,3 +16,4 @@ export default function NotFound(){
     </div>
   );
 };
+export default NotFound;
