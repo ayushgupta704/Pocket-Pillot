@@ -4,10 +4,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Plus } from 'lucide-react';
 import { getUserAccounts } from '@/actions/dashboard';
 import AccountCard from './_components/account-card';
+
 async function DashboardPage(){
 
   const accounts=await getUserAccounts();
-  console.log(accounts);
+  // console.log(accounts);
 
   return (
   <div className='px-5'>
