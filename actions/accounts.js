@@ -41,8 +41,11 @@ export async function updateDefaultAccount(accountId){
         return {success:false,error:error.message};
     }
 }
-export async function getAccountWithTransaction(accountId){
-    const {userId} =await db.user.findUnique({
+export async function getAccountWithTransactions(accountId){
+    const {userId}=await auth();
+    if(!userId) throw new Error("Unauthorized");
+
+    const user =await db.user.findUnique({
         where:{clerkUserId:userId},
     });
     if(!user){

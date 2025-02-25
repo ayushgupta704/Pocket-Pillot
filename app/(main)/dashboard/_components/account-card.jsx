@@ -7,7 +7,7 @@ import { Card,
     CardTitle
 } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { ArrowUpRight} from "lucide-react";
+import { ArrowUpRight,CreditCard} from "lucide-react";
 import React, { useEffect } from "react";
 import { ArrowDownRight } from "lucide-react";
 import Link from "next/link";
@@ -39,7 +39,8 @@ const AccountCard=({account})=>{
         if(updatedAccount?.success){
             toast.success("Default account updated successsfully");
         }
-    },[updateDefaultAccount,updateDefaultLoading]);
+    },[updatedAccount]);
+    // [updateDefaultAccount,updateDefaultLoading]);
 
     
     
