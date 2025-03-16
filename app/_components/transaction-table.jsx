@@ -15,7 +15,7 @@ import { categoryColors } from "@/data/categories";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-import { ChevronDown, ChevronUp, Clock, MoreHorizontal, RefreshCw } from "lucide-react";
+import { ChevronDown, ChevronUp, Clock, MoreHorizontal, RefreshCw, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -27,6 +27,7 @@ import {
 
  } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
 
 const RECURRING_INTERVALS={
     DAILY:"Daily",
@@ -42,6 +43,14 @@ const TransactionTable=({transactions})=>{
         field:"date",
         direction:"desc",
     });
+
+// adding filters and search bar
+
+    const [searchTerm,setSearchTerm]=useState("");
+    const [typeFilter,setTypeFilter]=useState("");
+    const [recurringFilter,setRecurringFilter]=useState("");
+
+
     const filteredAndSortedTransactions=transactions;
 
     const handleSort=(field)=>{
@@ -73,6 +82,17 @@ const TransactionTable=({transactions})=>{
     return (
     <div className="space-y-4">
 {/* Filters */}
+    <div className="flex flex-col sm:flex-row gap-4">
+        <div className="relative flex-1">
+            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground"/>
+            <Input 
+             className="pl-8"
+             placeholder="Search transactions..."
+             value={searchTerm}
+             onChange={(e)=>setSearchTerm(e.target.value)}
+            />
+        </div>
+    </div>
 
 {/* Transaction */}
         <div className="rounded-md border"> 
