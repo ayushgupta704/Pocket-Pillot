@@ -202,7 +202,7 @@ const TransactionTable=({transactions})=>{
         <Select value={recurringFilter}
         onValueChange={(value)=>setRecurringFilter(value)}
         >
-            <SelectTrigger className="w-[150px]">
+            <SelectTrigger className="w-[140px]">
                 <SelectValue placeholder="All Transactions" />
             </SelectTrigger>
             <SelectContent>
