@@ -116,21 +116,27 @@ const AccountChart= ({transactions}) => {
                             left:10,
                             bottom:0,
                         }}>
-                            <CartesianGrid strokeDasharray="3 3 "/>
-                            <XAxis datakey="name"/>
-                            <YAxis/>
-                            <Tooltip/>
-                            <Legend/>
-                            <Bar 
-                            dataKey="pv"
-                            fill='#82ca9d'
-                            activeBar={<Rectangle fill='pink'stroke='blue'/>}
-                            />
-                            <Bar
-                            dataKey="uv"
-                            fill='#82ca9d'
-                            activeBar={<Rectangle fill='gold'stroke='puple'/>}
-                            />
+                            <CartesianGrid strokeDasharray="3 3 "vertical={false}/>
+                            <XAxis datakey="date"/>
+                            <YAxis 
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                            tickFormatter={(value)=>`$${value}`}/>
+                        <Tooltip formatter={(value)=>[`$${value}`,undefined]}/>
+                        <Legend/>
+                        <Bar 
+                            dataKey="income"
+                            name="Income"
+                            fill='#22c55e'
+                            radius={[4,4,0,0]}
+                        />
+                        <Bar
+                            dataKey="expense"
+                            name="Expense"
+                            fill='#ef4444'
+                            radius={[4,4,0,0]}
+                        />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
