@@ -1,5 +1,5 @@
 "use client"
-import { Button ,Progress} from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
 import { Check, Pencil } from 'lucide-react';
@@ -8,7 +8,7 @@ import { X } from 'lucide-react';
 import useFetch from '@/hooks/use-fetch';
 import { toast } from 'sonner';
 import { updateBudget } from '@/actions/budget';
-
+import { Progress } from '@/components/ui/progress';
 
 const BudgetProgress = ({initialBudget,currentExpenses}) => {
     const [isEditing,setIsEditing]=useState(false);
@@ -74,13 +74,13 @@ const BudgetProgress = ({initialBudget,currentExpenses}) => {
                         className="w-32"
                         placeholder="Enter amount"
                         autoFocus
-                        // disabled={isLoading}
+                        disabled={isLoading}
                         />
                         <Button 
                         variant="ghost"
                         size="icon"
                         onClick={handleUpdateBudget}
-                        // disabled={isLoading}
+                        disabled={isLoading}
                         >
                             <Check className='h-4 w-4 text-green-500'/>
                         </Button>
@@ -89,7 +89,7 @@ const BudgetProgress = ({initialBudget,currentExpenses}) => {
                         variant="ghost"
                         size="icon"
                         onClick={handleCancel}
-                        // disabled={isLoading}
+                        disabled={isLoading}
                         >
 
                             <X className="h-4 w-4 text-red-500"/>
@@ -120,6 +120,23 @@ const BudgetProgress = ({initialBudget,currentExpenses}) => {
 
         </CardHeader>
         <CardContent>
+            {initialBudget && (
+                <div className='space-y-2'>
+                    <Progress 
+                    value={percentUsed}
+                    extraStyles={`${
+                        percentUsed>=90
+                        ?"bg-red-500"
+                        :percentUsed>=75
+                        ?"bg-yellow-500"
+                        :"bg-green-500"
+                    }`}
+                    />
+                    <p className='text-xs text-muted-foreground text-right'>
+                        {percentUsed.toFixed(1)}%used
+                    </p>
+                </div>
+            )}
             <p>Card Content</p>
         </CardContent>
     </Card>
